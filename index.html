@@ -14,14 +14,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <!--BUILD:STYLE-->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 <!--/BUILD:STYLE-->
 </head>
 <body>
 <!--BUILD:BODY-->
+<div id="top"></div>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="header" id="top">
+<header class="header">
   <div class="header__inner wrap">
     <a class="monogram" href="#top" aria-label="Thatiane Moura, home">T<span>M</span></a>
 
@@ -60,38 +61,20 @@
         <p class="hero__tagline load" style="--d:2" data-i18n="hero.tagline">UGC Creator | Tech, AI &amp; Digital Experiences</p>
         <p class="hero__intro load" style="--d:3" data-i18n="hero.intro">Short-form videos that show how apps, AI tools and digital products fit into real life.</p>
         <div class="hero__ctas load" style="--d:4">
-          <a class="btn btn--solid" href="#work"><span data-i18n="hero.ctaWork">View my work</span><span class="btn__arrow" aria-hidden="true">↓</span></a>
+          <a class="btn btn--rose" href="#work"><span data-i18n="hero.ctaWork">View my work</span><span class="btn__arrow" aria-hidden="true">↓</span></a>
           <a class="btn btn--line" href="#contact"><span data-i18n="hero.ctaContact">Get in touch</span><span class="btn__arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
 
-      <div class="hero__visual load" style="--d:2" aria-hidden="true">
-        <div class="glow"></div>
-        <div class="chip chip--left"><span class="chip__dot"></span><span data-i18n="hero.chipLeft">AI · Apps · Tech</span></div>
-        <div class="chip chip--right"><span data-i18n="hero.chipRight">Captions on</span><span class="chip__toggle"></span></div>
+      <div class="hero__visual load" style="--d:2">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="chip chip--left" aria-hidden="true"><span class="chip__dot"></span><span data-i18n="hero.chipLeft">AI · Apps · Tech</span></div>
 
-        <div class="phone">
-          <div class="phone__screen">
-            <div class="phone__bar">
-              <span class="rec"><span class="rec__dot"></span>REC</span>
-              <span class="timecode" id="timecode">00:00:00</span>
-              <span class="ratio">9:16</span>
-            </div>
-
-            <div class="viewfinder">
-              <span class="vf vf--tl"></span><span class="vf vf--tr"></span>
-              <span class="vf vf--bl"></span><span class="vf vf--br"></span>
-              <div class="levels">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-            </div>
-
-            <div class="phone__meta">
-              <span>HOOK 0:03</span><span>4K · 30FPS</span>
-            </div>
-            <div class="caption"><span id="caption">Testing a new AI tool…</span><span class="cursor"></span></div>
-          </div>
-        </div>
+        <figure class="phone" aria-labelledby="introLabel">
+          <!-- Área do vídeo de apresentação: preenchida pelo script a partir de content.js (introVideo) -->
+          <div class="phone__screen" id="introMedia"></div>
+          <figcaption class="phone__caption" id="introLabel" data-i18n="hero.videoLabel">Intro video</figcaption>
+        </figure>
       </div>
     </div>
 
@@ -101,7 +84,7 @@
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="band band--light" id="about" aria-labelledby="aboutTitle">
+  <section class="band band--petal" id="about" aria-labelledby="aboutTitle">
     <div class="wrap about">
       <div class="about__photo" id="aboutPhoto">
         <div class="photo-placeholder">
@@ -140,7 +123,7 @@
   </section>
 
   <!-- ============ SERVICES ============ -->
-  <section class="band band--mist" id="services" aria-labelledby="servicesTitle">
+  <section class="band band--light" id="services" aria-labelledby="servicesTitle">
     <div class="wrap">
       <div class="section-head section-head--row">
         <div>
@@ -160,6 +143,7 @@
         <p class="eyebrow eyebrow--dark"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.label">Contact</span></p>
         <h2 class="contact__title" id="contactTitle" data-i18n="contact.title">Let's create content for your product.</h2>
         <p class="section-head__intro" data-i18n="contact.intro">For collaborations, campaigns and briefs, reach out by email or social media.</p>
+        <a class="btn btn--rose contact__cta" id="contactCta" href="#contact" hidden><span data-i18n="contact.send">Send an email</span><span class="btn__arrow" aria-hidden="true">→</span></a>
       </div>
       <ul class="contact-list" id="contactList"></ul>
     </div>
@@ -175,8 +159,8 @@
 <!--/BUILD:BODY-->
 
 <!--BUILD:SCRIPTS-->
-<script src="content.js"></script>
-<script src="script.js"></script>
+<script src="content.js?v=3"></script>
+<script src="script.js?v=3"></script>
 <!--/BUILD:SCRIPTS-->
 </body>
 </html>

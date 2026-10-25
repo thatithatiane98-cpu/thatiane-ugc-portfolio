@@ -11,7 +11,16 @@
   var TODO = "[A CONFIRMAR]";
   var STORE_KEY = "tm-lang";
   var lang = "en";
-  var captionTimer = null;
+
+  /* Textos de segurança: usados só se faltarem no content.js */
+  var DEFAULTS = {
+    en: { "contact.send": "Send an email", "work.watch": "Watch video", "work.post": "View post",
+          "hero.videoLabel": "Intro video", "hero.videoSoon": "Coming soon",
+          "hero.videoHint": "Add the link in content.js → introVideo" },
+    pt: { "contact.send": "Enviar e-mail", "work.watch": "Assistir vídeo", "work.post": "Ver publicação",
+          "hero.videoLabel": "Vídeo de apresentação", "hero.videoSoon": "Em breve",
+          "hero.videoHint": "Adicione o link em content.js → introVideo" }
+  };
 
   /* ---------- Helpers ---------- */
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -21,15 +30,22 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  // Escapes text and turns [A CONFIRMAR] into a visible tag.
+  // Escapes text, turns [A CONFIRMAR] into a visible tag,
+  // *words between asterisks* into the rose italic accent and " | " into a rose divider.
   function rich(str) {
     var safe = escapeHTML(str == null ? "" : str);
-    return safe.split(escapeHTML(TODO)).join('<mark class="todo">A CONFIRMAR</mark>');
+    safe = safe.split(escapeHTML(TODO)).join('<mark class="todo">A CONFIRMAR</mark>');
+    safe = safe.replace(/\*([^*]+)\*/g, '<em class="accent">$1</em>');
+    safe = safe.replace(/ \| /g, ' <span class="sep" aria-hidden="true">|</span> ');
+    return safe;
   }
   function t(key) {
     var dict = (SITE.text && SITE.text[lang]) || {};
     var fallback = (SITE.text && SITE.text.en) || {};
-    return dict[key] != null ? dict[key] : (fallback[key] != null ? fallback[key] : "");
+    if (dict[key] != null) return dict[key];
+    if (fallback[key] != null) return fallback[key];
+    var d = DEFAULTS[lang] || DEFAULTS.en;
+    return d[key] != null ? d[key] : "";
   }
   function pick(value) {
     if (value == null) return "";
@@ -76,43 +92,43 @@
     track.innerHTML = '<div class="ticker__group">' + group + group + '</div><div class="ticker__group">' + group + group + "</div>";
   }
 
-  /* ---------- Phone caption (typing) ---------- */
-  function startCaptions() {
-    var el = $("#caption");
-    if (!el) return;
-    clearTimeout(captionTimer);
-    var list = t("hero.captions");
-    if (!Array.isArray(list) || !list.length) return;
-    if (reduceMotion) { el.textContent = list[0]; return; }
-
-    var idx = 0, pos = 0, deleting = false;
-    function step() {
-      var full = list[idx];
-      if (!deleting) {
-        pos++;
-        el.textContent = full.slice(0, pos);
-        if (pos >= full.length) { deleting = true; captionTimer = setTimeout(step, 2200); return; }
-        captionTimer = setTimeout(step, 55 + Math.random() * 45);
-      } else {
-        pos--;
-        el.textContent = full.slice(0, pos);
-        if (pos <= 0) { deleting = false; idx = (idx + 1) % list.length; captionTimer = setTimeout(step, 420); return; }
-        captionTimer = setTimeout(step, 24);
+  /* ---------- Intro video (hero) ---------- */
+  function renderIntro() {
+    var box = $("#introMedia");
+    if (!box) return;
+    var embed = videoEmbed(SITE.introVideo);
+    var title = escapeHTML(t("hero.videoLabel")) + " · Thatiane Moura";
+    box.className = "phone__screen";
+    if (embed && embed.type === "iframe") {
+      box.classList.add("phone__screen--video");
+      if (!box.querySelector("iframe")) {
+        box.innerHTML = '<iframe src="' + escapeHTML(embed.src) + '" title="' + title + '" loading="lazy" ' +
+          'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
       }
+      return;
     }
-    el.textContent = "";
-    step();
-  }
-
-  function startTimecode() {
-    var el = $("#timecode");
-    if (!el || reduceMotion) return;
-    var frames = 0;
-    setInterval(function () {
-      frames = (frames + 1) % (30 * 30); // loops every 30 seconds
-      var s = Math.floor(frames / 30), f = frames % 30;
-      el.textContent = "00:" + String(s).padStart(2, "0") + ":" + String(f).padStart(2, "0");
-    }, 1000 / 30);
+    if (embed && embed.type === "video") {
+      box.classList.add("phone__screen--video");
+      if (!box.querySelector("video")) {
+        var poster = isFilled(SITE.introPoster) ? ' poster="' + escapeHTML(SITE.introPoster.trim()) + '"' : "";
+        box.innerHTML = '<video src="' + escapeHTML(embed.src) + '"' + poster + ' controls playsinline preload="metadata" aria-label="' + title + '"></video>';
+      }
+      return;
+    }
+    box.classList.add("phone__screen--empty");
+    var corners = '<span class="vf vf--tl"></span><span class="vf vf--tr"></span><span class="vf vf--bl"></span><span class="vf vf--br"></span>';
+    var top = '<span class="intro-empty__top" aria-hidden="true"><span>Intro</span><span>9:16</span></span>';
+    if (embed && embed.type === "link") {
+      box.innerHTML = '<a class="intro-empty" href="' + escapeHTML(embed.src) + '" target="_blank" rel="noopener">' + corners + top +
+        '<span class="intro-empty__center"><span class="play" aria-hidden="true"></span><span class="media__label">' +
+        escapeHTML(t("work.watch")) + ' ↗</span></span></a>';
+      return;
+    }
+    box.innerHTML = '<div class="intro-empty">' + corners + top +
+      '<span class="intro-empty__center"><span class="play play--pending" aria-hidden="true"></span><span class="media__label">' +
+      escapeHTML(t("hero.videoSoon")) + "</span>" +
+      (showTodo ? '<span class="media__hint">' + escapeHTML(t("hero.videoHint")) + "</span>" : "") +
+      "</span></div>";
   }
 
   /* ---------- Projects ---------- */
@@ -141,32 +157,49 @@
         media = '<div class="media media--empty">' +
           '<span class="vf vf--tl"></span><span class="vf vf--tr"></span><span class="vf vf--bl"></span><span class="vf vf--br"></span>' +
           '<span class="media__top" aria-hidden="true"><span>' + name + '</span><span>9:16</span></span>' +
-          '<span class="media__soon"><span class="play" aria-hidden="true"></span>' +
+          '<span class="media__soon"><span class="play play--pending" aria-hidden="true"></span>' +
           '<span class="media__label">' + escapeHTML(t("work.soon")) + '</span>' +
           (showTodo ? '<span class="media__hint">' + escapeHTML(t("work.hint")) + "</span>" : "") +
           "</span></div>";
       }
 
       var links = "";
-      if (isFilled(p.post)) {
-        links = '<div class="card__links"><a class="card__link" href="' + escapeHTML(p.post.trim()) + '" target="_blank" rel="noopener">' +
-          escapeHTML(t("work.post")) + " ↗</a></div>";
+      var postUrl = isFilled(p.post) ? p.post : (isFilled(p.link) ? p.link : "");
+      if (postUrl) {
+        links = '<div class="card__links"><a class="card__link" href="' + escapeHTML(postUrl.trim()) + '" target="_blank" rel="noopener">' +
+          escapeHTML(t("work.post")) + ' <span aria-hidden="true">↗</span></a></div>';
       }
+      var cat = pick(p.category);
 
       return '<li class="card">' + media +
-        '<div class="card__meta"><div class="card__row"><h3 class="card__name">' + name + "</h3>" +
-        '<span class="card__cat">' + rich(pick(p.category)) + "</span></div>" +
+        '<div class="card__meta">' +
+        (cat ? '<span class="card__cat">' + rich(cat) + "</span>" : "") +
+        '<h3 class="card__name">' + name + "</h3>" +
         '<p class="card__desc">' + rich(pick(p.description)) + "</p>" + links + "</div></li>";
     }).join("");
   }
 
   /* ---------- Services ---------- */
+  var ICONS = {
+    video: '<rect x="3" y="6" width="12" height="12" rx="2.5"/><path d="M15 10.5l5-3v9l-5-3"/>',
+    app: '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 17.5h2"/>',
+    ai: '<path d="M11 3.5l1.7 4.8 4.8 1.7-4.8 1.7L11 16.5l-1.7-4.8L4.5 10l4.8-1.7z"/><path d="M18 15l.7 1.8 1.8.7-1.8.7L18 20l-.7-1.8-1.8-.7 1.8-.7z"/>',
+    tutorial: '<path d="M10 6.5h10M10 12h10M10 17.5h10"/><circle cx="5.5" cy="6.5" r="1.3"/><circle cx="5.5" cy="12" r="1.3"/><circle cx="5.5" cy="17.5" r="1.3"/>',
+    idea: '<path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.4 10.9c.6.4.9 1.1.9 1.8V16h5v-.3c0-.7.3-1.4.9-1.8A6 6 0 0 0 12 3z"/>',
+    review: '<path d="M12 3.8l2.5 5.1 5.6.8-4 3.9 1 5.6L12 16.6l-5.1 2.6 1-5.6-4-3.9 5.6-.8z"/>'
+  };
+  var ICON_ORDER = ["video", "app", "ai", "tutorial", "idea", "review"];
+  function icon(name, i) {
+    var path = ICONS[name] || ICONS[ICON_ORDER[i % ICON_ORDER.length]];
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + path + "</svg>";
+  }
+
   function renderServices() {
     var list = $("#servicesList");
     if (!list) return;
-    list.innerHTML = (SITE.services || []).map(function (s) {
+    list.innerHTML = (SITE.services || []).map(function (s, i) {
       var tags = (pick(s.tags) || []).map(function (tg) { return '<span class="tag">' + escapeHTML(tg) + "</span>"; }).join("");
-      return '<li class="service"><span class="service__mark" aria-hidden="true"></span>' +
+      return '<li class="service"><span class="service__icon">' + icon(s.icon, i) + "</span>" +
         '<h3 class="service__title">' + escapeHTML(pick(s.title)) + "</h3>" +
         '<p class="service__text">' + escapeHTML(pick(s.text)) + "</p>" +
         (tags ? '<div class="tags">' + tags + "</div>" : "") + "</li>";
@@ -194,22 +227,28 @@
     function emptyRow(label) {
       if (!showTodo) return;
       rows.push('<li><div class="contact-item contact-item--empty"><span class="contact-item__label">' + escapeHTML(label) +
-        '</span><span class="contact-item__value">' + rich(t("contact.missing")) + "</span><span></span></div></li>");
+        '</span><span class="contact-item__value">' + rich(t("contact.missing")) + "</span></div></li>");
     }
     function linkRow(label, url, display) {
       rows.push('<li><a class="contact-item" href="' + escapeHTML(url) + '" target="_blank" rel="noopener">' +
         '<span class="contact-item__label">' + escapeHTML(label) + '</span>' +
         '<span class="contact-item__value">' + escapeHTML(display) + '</span>' +
-        '<span class="contact-item__arrow" aria-hidden="true">↗</span></a></li>');
+        '<span class="contact-item__end"><span class="contact-item__arrow" aria-hidden="true">↗</span></span></a></li>');
     }
 
     // Email
     if (isFilled(c.email)) {
       var mail = c.email.trim();
       rows.push('<li><div class="contact-item"><span class="contact-item__label">' + escapeHTML(t("contact.email")) + '</span>' +
-        '<span class="contact-item__value"><a href="mailto:' + escapeHTML(mail) + '" id="emailText">' + escapeHTML(mail) + '</a></span>' +
-        '<button type="button" class="copy-btn" id="copyEmail" data-value="' + escapeHTML(mail) + '">' + escapeHTML(t("contact.copy")) + "</button></div></li>");
+        '<span class="contact-item__value"><a href="mailto:' + escapeHTML(mail) + '" id="emailText">' + escapeHTML(mail).replace("@", "@<wbr>") + '</a></span>' +
+        '<span class="contact-item__end"><button type="button" class="copy-btn" id="copyEmail" data-value="' + escapeHTML(mail) + '">' + escapeHTML(t("contact.copy")) + "</button></span></div></li>");
     } else { emptyRow(t("contact.email")); }
+
+    var cta = $("#contactCta");
+    if (cta) {
+      if (isFilled(c.email)) { cta.href = "mailto:" + c.email.trim(); cta.hidden = false; }
+      else { cta.hidden = true; }
+    }
 
     if (isFilled(c.instagram)) linkRow("Instagram", c.instagram.trim(), handleFrom(c.instagram.trim(), true));
     else emptyRow("Instagram");
@@ -270,10 +309,10 @@
     });
     applyTexts();
     renderTicker();
+    renderIntro();
     renderProjects();
     renderServices();
     renderContact();
-    startCaptions();
     if (save) storageSet(STORE_KEY, lang);
   }
 
@@ -292,12 +331,28 @@
     if (!btn || !nav) return;
     function set(open) {
       nav.classList.toggle("is-open", open);
+      document.documentElement.classList.toggle("menu-open", open);
       btn.setAttribute("aria-expanded", String(open));
       var label = $(".menu-btn__label", btn);
       if (label) label.textContent = open ? t("nav.close") : t("nav.menu");
     }
     btn.addEventListener("click", function () { set(btn.getAttribute("aria-expanded") !== "true"); });
-    $all("a", nav).forEach(function (a) { a.addEventListener("click", function () { set(false); }); });
+    $all("a", nav).forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        set(false);
+        if (!open) return;
+        // Unlock the page first, then scroll to the section
+        var target = document.querySelector(a.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          requestAnimationFrame(function () {
+            target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+            if (history.replaceState) history.replaceState(null, "", a.getAttribute("href"));
+          });
+        }
+      });
+    });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
   }
 
@@ -318,6 +373,5 @@
   renderPhoto();
   initMenu();
   initHeader();
-  startTimecode();
   setLanguage(initialLanguage(), false);
 })();

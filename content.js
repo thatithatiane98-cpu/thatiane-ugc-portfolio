@@ -1,11 +1,13 @@
 /* =====================================================================
    CONTENT.JS — O ÚNICO ARQUIVO QUE VOCÊ PRECISA EDITAR NO DIA A DIA
+   Versão final (v3)
    ---------------------------------------------------------------------
    Regras simples para não quebrar nada:
    1. Edite somente o texto que está ENTRE aspas: "assim".
    2. Não apague vírgulas, chaves { } ou colchetes [ ].
    3. Onde aparecer [A CONFIRMAR], troque pela informação real.
    4. Cada texto tem uma versão "en" (inglês) e "pt" (português).
+   5. *Palavras entre asteriscos* aparecem em itálico com destaque rosa.
    ===================================================================== */
 
 window.SITE = {
@@ -41,6 +43,17 @@ window.SITE = {
   },
 
   /* ---------------------------------------------------------------
+     VÍDEO DE APRESENTAÇÃO (primeira tela, dentro do celular)
+     Enquanto estiver "", aparece o aviso "Coming soon" (em breve).
+     Aceita: link do YouTube (inclusive Shorts / "não listado"),
+     link do Vimeo, ou um arquivo enviado junto com o site,
+     por exemplo "videos/apresentacao.mp4".
+     introPoster: (opcional) imagem de capa para arquivo .mp4.
+     --------------------------------------------------------------- */
+  introVideo: "",
+  introPoster: "",
+
+  /* ---------------------------------------------------------------
      FOTO (seção About)
      Envie a foto para o mesmo lugar do site (ex.: "foto.jpg")
      e escreva o nome do arquivo aqui. Deixe "" enquanto não tiver.
@@ -56,7 +69,8 @@ window.SITE = {
        - YouTube (inclusive Shorts e vídeos "não listados")
        - Vimeo
        - Arquivo de vídeo enviado junto com o site, ex.: "videos/miqla.mp4"
-     post:   (opcional) link da publicação no TikTok/Instagram.
+     post:   (opcional) link para assistir no TikTok/Instagram/YouTube.
+             Aparece como o botão "View post" embaixo do card.
      poster: (opcional) imagem de capa para arquivos .mp4.
      --------------------------------------------------------------- */
   projects: [
@@ -108,10 +122,12 @@ window.SITE = {
 
   /* ---------------------------------------------------------------
      SERVIÇOS
+     icon: video, app, ai, tutorial, idea ou review (ícone do card).
      tags: palavras curtas que aparecem embaixo de cada serviço.
      --------------------------------------------------------------- */
   services: [
     {
+      icon: "video",
       title: { en: "UGC Video Creation", pt: "Criação de vídeos UGC" },
       text: {
         en: "Authentic vertical videos that present your product from a real user's point of view.",
@@ -120,6 +136,7 @@ window.SITE = {
       tags: { en: ["Vertical 9:16", "Organic style"], pt: ["Vertical 9:16", "Estilo orgânico"] }
     },
     {
+      icon: "app",
       title: { en: "App Demonstrations", pt: "Demonstrações de apps" },
       text: {
         en: "Clear walkthroughs of key features, combining screen recordings with on-camera content.",
@@ -128,6 +145,7 @@ window.SITE = {
       tags: { en: ["Screen recording", "Feature focus"], pt: ["Gravação de tela", "Foco em funções"] }
     },
     {
+      icon: "ai",
       title: { en: "AI Tool Demonstrations", pt: "Demonstrações de ferramentas de IA" },
       text: {
         en: "Showing what an AI tool does in practice, from the first prompt to the final result.",
@@ -136,6 +154,7 @@ window.SITE = {
       tags: { en: ["Prompt to result", "Use cases"], pt: ["Do comando ao resultado", "Casos de uso"] }
     },
     {
+      icon: "tutorial",
       title: { en: "Product Tutorials", pt: "Tutoriais de produto" },
       text: {
         en: "Step-by-step content that helps new users get started with confidence.",
@@ -144,6 +163,7 @@ window.SITE = {
       tags: { en: ["Onboarding", "Step by step"], pt: ["Primeiros passos", "Passo a passo"] }
     },
     {
+      icon: "idea",
       title: { en: "Creative Concepts for Short-Form Video", pt: "Conceitos criativos para vídeos curtos" },
       text: {
         en: "Hooks, angles and scripts built around your product and the people it is made for.",
@@ -152,6 +172,7 @@ window.SITE = {
       tags: { en: ["Hooks", "Scripts"], pt: ["Ganchos", "Roteiros"] }
     },
     {
+      icon: "review",
       title: { en: "Product Reviews & Lifestyle Content", pt: "Reviews e conteúdo lifestyle" },
       text: {
         en: "Your product inside everyday routines, presented in a natural and honest way.",
@@ -175,17 +196,18 @@ window.SITE = {
 
       "hero.eyebrow": "Tech · AI · Apps",
       "hero.tagline": "UGC Creator | Tech, AI & Digital Experiences",
-      "hero.intro": "Short-form videos that show how apps, AI tools and digital products fit into real life.",
+      "hero.intro": "I create short-form videos that show how apps, AI tools and digital products fit into everyday life. Clear, natural and made for mobile.",
       "hero.ctaWork": "View my work",
       "hero.ctaContact": "Get in touch",
-      "hero.captions": ["Testing a new AI tool…", "Let me show you how it works", "My new favorite app feature"],
       "hero.chipLeft": "AI · Apps · Tech",
-      "hero.chipRight": "Captions on",
+      "hero.videoLabel": "Intro video",
+      "hero.videoSoon": "Coming soon",
+      "hero.videoHint": "Add the link in content.js → introVideo",
 
       "ticker": ["AI Tools", "Mobile Apps", "Productivity", "Digital Lifestyle", "Software", "Tech Innovation"],
 
       "about.label": "About",
-      "about.title": "Curious about technology. Focused on the people who use it.",
+      "about.title": "Curious about technology. *Focused on the people who use it.*",
       "about.p1": "I'm Thatiane, a UGC creator making content for technology brands, AI tools and apps. I like taking a digital product and showing it the way a real person would discover it: simple, honest and easy to follow.",
       "about.p2": "[A CONFIRMAR] Add a sentence about your background, what got you into tech and AI, and your content style.",
       "about.focusLabel": "Focus",
@@ -199,7 +221,7 @@ window.SITE = {
       "about.photo": "Photo [A CONFIRMAR]",
 
       "work.label": "Work",
-      "work.title": "Selected projects",
+      "work.title": "Selected *projects*",
       "work.intro": "Content featuring apps and digital products.",
       "work.soon": "Video coming soon",
       "work.hint": "Add the video link in content.js",
@@ -207,15 +229,16 @@ window.SITE = {
       "work.post": "View post",
 
       "services.label": "Services",
-      "services.title": "What I create",
+      "services.title": "What I *create*",
       "services.note": "Formats, deliverables and usage rights are defined for each project.",
 
       "contact.label": "Contact",
-      "contact.title": "Let's create content for your product.",
+      "contact.title": "Let's create content for *your product*.",
       "contact.intro": "For collaborations, campaigns and briefs, reach out by email or social media.",
       "contact.email": "Email",
       "contact.copy": "Copy",
       "contact.copied": "Copied",
+      "contact.send": "Send an email",
       "contact.missing": "[A CONFIRMAR]",
 
       "footer.role": "UGC Creator",
@@ -232,17 +255,18 @@ window.SITE = {
 
       "hero.eyebrow": "Tecnologia · IA · Apps",
       "hero.tagline": "UGC Creator | Tecnologia, IA & Experiências Digitais",
-      "hero.intro": "Vídeos curtos que mostram como apps, ferramentas de IA e produtos digitais fazem parte da vida real.",
+      "hero.intro": "Crio vídeos curtos que mostram como apps, ferramentas de IA e produtos digitais fazem parte do dia a dia. Claros, naturais e feitos para o celular.",
       "hero.ctaWork": "Ver meus trabalhos",
       "hero.ctaContact": "Entrar em contato",
-      "hero.captions": ["Testando uma nova ferramenta de IA…", "Vou te mostrar como funciona", "Minha função favorita do app"],
       "hero.chipLeft": "IA · Apps · Tech",
-      "hero.chipRight": "Legendas ativas",
+      "hero.videoLabel": "Vídeo de apresentação",
+      "hero.videoSoon": "Em breve",
+      "hero.videoHint": "Adicione o link em content.js → introVideo",
 
       "ticker": ["Ferramentas de IA", "Apps", "Produtividade", "Lifestyle digital", "Software", "Inovação"],
 
       "about.label": "Sobre",
-      "about.title": "Curiosa por tecnologia. Atenta às pessoas que a usam.",
+      "about.title": "Curiosa por tecnologia. *Atenta às pessoas que a usam.*",
       "about.p1": "Sou a Thatiane, UGC creator que cria conteúdo para marcas de tecnologia, ferramentas de IA e aplicativos. Gosto de pegar um produto digital e mostrá-lo do jeito que uma pessoa real o descobriria: de forma simples, honesta e fácil de acompanhar.",
       "about.p2": "[A CONFIRMAR] Adicione uma frase sobre sua trajetória, o que te aproximou de tecnologia e IA e o seu estilo de conteúdo.",
       "about.focusLabel": "Foco",
@@ -256,7 +280,7 @@ window.SITE = {
       "about.photo": "Foto [A CONFIRMAR]",
 
       "work.label": "Trabalhos",
-      "work.title": "Projetos selecionados",
+      "work.title": "Projetos *selecionados*",
       "work.intro": "Conteúdos com apps e produtos digitais.",
       "work.soon": "Vídeo em breve",
       "work.hint": "Adicione o link do vídeo em content.js",
@@ -264,15 +288,16 @@ window.SITE = {
       "work.post": "Ver publicação",
 
       "services.label": "Serviços",
-      "services.title": "O que eu crio",
+      "services.title": "O que eu *crio*",
       "services.note": "Formatos, entregas e direitos de uso são definidos em cada projeto.",
 
       "contact.label": "Contato",
-      "contact.title": "Vamos criar conteúdo para o seu produto.",
+      "contact.title": "Vamos criar conteúdo para *o seu produto*.",
       "contact.intro": "Para parcerias, campanhas e briefings, fale comigo por e-mail ou redes sociais.",
       "contact.email": "E-mail",
       "contact.copy": "Copiar",
       "contact.copied": "Copiado",
+      "contact.send": "Enviar e-mail",
       "contact.missing": "[A CONFIRMAR]",
 
       "footer.role": "UGC Creator",
