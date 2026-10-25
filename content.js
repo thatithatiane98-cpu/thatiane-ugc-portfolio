@@ -1,0 +1,282 @@
+/* =====================================================================
+   CONTENT.JS — O ÚNICO ARQUIVO QUE VOCÊ PRECISA EDITAR NO DIA A DIA
+   ---------------------------------------------------------------------
+   Regras simples para não quebrar nada:
+   1. Edite somente o texto que está ENTRE aspas: "assim".
+   2. Não apague vírgulas, chaves { } ou colchetes [ ].
+   3. Onde aparecer [A CONFIRMAR], troque pela informação real.
+   4. Cada texto tem uma versão "en" (inglês) e "pt" (português).
+   ===================================================================== */
+
+window.SITE = {
+
+  /* ---------------------------------------------------------------
+     CONFIGURAÇÕES
+     showPlaceholders: true  → mostra os campos [A CONFIRMAR]
+                                (bom enquanto você monta o site).
+     showPlaceholders: false → esconde contatos vazios e a dica de
+                                vídeo (use quando for divulgar o site).
+     --------------------------------------------------------------- */
+  settings: {
+    defaultLanguage: "en",
+    showPlaceholders: true
+  },
+
+  /* ---------------------------------------------------------------
+     CONTATOS
+     Cole o endereço completo entre as aspas. Deixe "" se não usar.
+     Exemplos de formato (não são seus dados):
+       email:     "nome@exemplo.com"
+       instagram: "https://www.instagram.com/seuusuario"
+       tiktok:    "https://www.tiktok.com/@seuusuario"
+     Contato vazio NÃO vira botão: ele aparece como [A CONFIRMAR]
+     (ou some, se showPlaceholders for false).
+     --------------------------------------------------------------- */
+  contact: {
+    email: "",
+    instagram: "",
+    tiktok: "",
+    linkedin: "",
+    other: { label: "", url: "" }
+  },
+
+  /* ---------------------------------------------------------------
+     FOTO (seção About)
+     Envie a foto para o mesmo lugar do site (ex.: "foto.jpg")
+     e escreva o nome do arquivo aqui. Deixe "" enquanto não tiver.
+     --------------------------------------------------------------- */
+  photo: "",
+
+  /* ---------------------------------------------------------------
+     PROJETOS
+     Para ADICIONAR um projeto: copie um bloco inteiro { ... },
+     cole depois do último, coloque uma vírgula entre eles e edite.
+
+     video: aceita 3 tipos de link
+       - YouTube (inclusive Shorts e vídeos "não listados")
+       - Vimeo
+       - Arquivo de vídeo enviado junto com o site, ex.: "videos/miqla.mp4"
+     post:   (opcional) link da publicação no TikTok/Instagram.
+     poster: (opcional) imagem de capa para arquivos .mp4.
+     --------------------------------------------------------------- */
+  projects: [
+    {
+      name: "Miqla",
+      category: { en: "[A CONFIRMAR]", pt: "[A CONFIRMAR]" },
+      description: {
+        en: "Short-form UGC video featuring Miqla. [A CONFIRMAR] Describe what the video shows and its format.",
+        pt: "Vídeo UGC curto com o Miqla. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+      },
+      video: "",
+      post: "",
+      poster: ""
+    },
+    {
+      name: "Picsart",
+      category: { en: "AI Creative App", pt: "App criativo com IA" },
+      description: {
+        en: "Short-form UGC video featuring Picsart. [A CONFIRMAR] Describe what the video shows and its format.",
+        pt: "Vídeo UGC curto com o Picsart. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+      },
+      video: "",
+      post: "",
+      poster: ""
+    },
+    {
+      name: "MPL",
+      category: { en: "Mobile Gaming App", pt: "App de jogos mobile" },
+      description: {
+        en: "Short-form UGC video featuring MPL. [A CONFIRMAR] Describe what the video shows and its format.",
+        pt: "Vídeo UGC curto com o MPL. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+      },
+      video: "",
+      post: "",
+      poster: ""
+    },
+    {
+      name: "Airlearn",
+      category: { en: "Language Learning App", pt: "App de idiomas" },
+      description: {
+        en: "Short-form UGC video featuring Airlearn. [A CONFIRMAR] Describe what the video shows and its format.",
+        pt: "Vídeo UGC curto com o Airlearn. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+      },
+      video: "",
+      post: "",
+      poster: ""
+    }
+  ],
+
+  /* ---------------------------------------------------------------
+     SERVIÇOS
+     tags: palavras curtas que aparecem embaixo de cada serviço.
+     --------------------------------------------------------------- */
+  services: [
+    {
+      title: { en: "UGC Video Creation", pt: "Criação de vídeos UGC" },
+      text: {
+        en: "Authentic vertical videos that present your product from a real user's point of view.",
+        pt: "Vídeos verticais autênticos que apresentam seu produto do ponto de vista de quem usa."
+      },
+      tags: { en: ["Vertical 9:16", "Organic style"], pt: ["Vertical 9:16", "Estilo orgânico"] }
+    },
+    {
+      title: { en: "App Demonstrations", pt: "Demonstrações de apps" },
+      text: {
+        en: "Clear walkthroughs of key features, combining screen recordings with on-camera content.",
+        pt: "Apresentações claras das principais funções, unindo gravação de tela e vídeo em câmera."
+      },
+      tags: { en: ["Screen recording", "Feature focus"], pt: ["Gravação de tela", "Foco em funções"] }
+    },
+    {
+      title: { en: "AI Tool Demonstrations", pt: "Demonstrações de ferramentas de IA" },
+      text: {
+        en: "Showing what an AI tool does in practice, from the first prompt to the final result.",
+        pt: "Mostrar o que uma ferramenta de IA faz na prática, do primeiro comando ao resultado final."
+      },
+      tags: { en: ["Prompt to result", "Use cases"], pt: ["Do comando ao resultado", "Casos de uso"] }
+    },
+    {
+      title: { en: "Product Tutorials", pt: "Tutoriais de produto" },
+      text: {
+        en: "Step-by-step content that helps new users get started with confidence.",
+        pt: "Conteúdo passo a passo que ajuda novos usuários a começar com segurança."
+      },
+      tags: { en: ["Onboarding", "Step by step"], pt: ["Primeiros passos", "Passo a passo"] }
+    },
+    {
+      title: { en: "Creative Concepts for Short-Form Video", pt: "Conceitos criativos para vídeos curtos" },
+      text: {
+        en: "Hooks, angles and scripts built around your product and the people it is made for.",
+        pt: "Ganchos, abordagens e roteiros pensados para o seu produto e para o seu público."
+      },
+      tags: { en: ["Hooks", "Scripts"], pt: ["Ganchos", "Roteiros"] }
+    },
+    {
+      title: { en: "Product Reviews & Lifestyle Content", pt: "Reviews e conteúdo lifestyle" },
+      text: {
+        en: "Your product inside everyday routines, presented in a natural and honest way.",
+        pt: "Seu produto dentro da rotina, apresentado de forma natural e honesta."
+      },
+      tags: { en: ["Daily routine", "Reviews"], pt: ["Rotina", "Reviews"] }
+    }
+  ],
+
+  /* ---------------------------------------------------------------
+     TEXTOS DO SITE (inglês e português)
+     --------------------------------------------------------------- */
+  text: {
+    en: {
+      "nav.work": "Work",
+      "nav.about": "About",
+      "nav.services": "Services",
+      "nav.contact": "Contact",
+      "nav.menu": "Menu",
+      "nav.close": "Close",
+
+      "hero.eyebrow": "Tech · AI · Apps",
+      "hero.tagline": "UGC Creator | Tech, AI & Digital Experiences",
+      "hero.intro": "Short-form videos that show how apps, AI tools and digital products fit into real life.",
+      "hero.ctaWork": "View my work",
+      "hero.ctaContact": "Get in touch",
+      "hero.captions": ["Testing a new AI tool…", "Let me show you how it works", "My new favorite app feature"],
+      "hero.chipLeft": "AI · Apps · Tech",
+      "hero.chipRight": "Captions on",
+
+      "ticker": ["AI Tools", "Mobile Apps", "Productivity", "Digital Lifestyle", "Software", "Tech Innovation"],
+
+      "about.label": "About",
+      "about.title": "Curious about technology. Focused on the people who use it.",
+      "about.p1": "I'm Thatiane, a UGC creator making content for technology brands, AI tools and apps. I like taking a digital product and showing it the way a real person would discover it: simple, honest and easy to follow.",
+      "about.p2": "[A CONFIRMAR] Add a sentence about your background, what got you into tech and AI, and your content style.",
+      "about.focusLabel": "Focus",
+      "about.focus": "AI tools · Apps · Tech",
+      "about.formatLabel": "Format",
+      "about.format": "Vertical short-form video",
+      "about.langLabel": "Languages",
+      "about.lang": "[A CONFIRMAR]",
+      "about.baseLabel": "Based in",
+      "about.base": "[A CONFIRMAR]",
+      "about.photo": "Photo [A CONFIRMAR]",
+
+      "work.label": "Work",
+      "work.title": "Selected projects",
+      "work.intro": "Content featuring apps and digital products.",
+      "work.soon": "Video coming soon",
+      "work.hint": "Add the video link in content.js",
+      "work.watch": "Watch video",
+      "work.post": "View post",
+
+      "services.label": "Services",
+      "services.title": "What I create",
+      "services.note": "Formats, deliverables and usage rights are defined for each project.",
+
+      "contact.label": "Contact",
+      "contact.title": "Let's create content for your product.",
+      "contact.intro": "For collaborations, campaigns and briefs, reach out by email or social media.",
+      "contact.email": "Email",
+      "contact.copy": "Copy",
+      "contact.copied": "Copied",
+      "contact.missing": "[A CONFIRMAR]",
+
+      "footer.role": "UGC Creator",
+      "footer.top": "Back to top"
+    },
+
+    pt: {
+      "nav.work": "Trabalhos",
+      "nav.about": "Sobre",
+      "nav.services": "Serviços",
+      "nav.contact": "Contato",
+      "nav.menu": "Menu",
+      "nav.close": "Fechar",
+
+      "hero.eyebrow": "Tecnologia · IA · Apps",
+      "hero.tagline": "UGC Creator | Tecnologia, IA & Experiências Digitais",
+      "hero.intro": "Vídeos curtos que mostram como apps, ferramentas de IA e produtos digitais fazem parte da vida real.",
+      "hero.ctaWork": "Ver meus trabalhos",
+      "hero.ctaContact": "Entrar em contato",
+      "hero.captions": ["Testando uma nova ferramenta de IA…", "Vou te mostrar como funciona", "Minha função favorita do app"],
+      "hero.chipLeft": "IA · Apps · Tech",
+      "hero.chipRight": "Legendas ativas",
+
+      "ticker": ["Ferramentas de IA", "Apps", "Produtividade", "Lifestyle digital", "Software", "Inovação"],
+
+      "about.label": "Sobre",
+      "about.title": "Curiosa por tecnologia. Atenta às pessoas que a usam.",
+      "about.p1": "Sou a Thatiane, UGC creator que cria conteúdo para marcas de tecnologia, ferramentas de IA e aplicativos. Gosto de pegar um produto digital e mostrá-lo do jeito que uma pessoa real o descobriria: de forma simples, honesta e fácil de acompanhar.",
+      "about.p2": "[A CONFIRMAR] Adicione uma frase sobre sua trajetória, o que te aproximou de tecnologia e IA e o seu estilo de conteúdo.",
+      "about.focusLabel": "Foco",
+      "about.focus": "Ferramentas de IA · Apps · Tech",
+      "about.formatLabel": "Formato",
+      "about.format": "Vídeo vertical curto",
+      "about.langLabel": "Idiomas",
+      "about.lang": "[A CONFIRMAR]",
+      "about.baseLabel": "Localização",
+      "about.base": "[A CONFIRMAR]",
+      "about.photo": "Foto [A CONFIRMAR]",
+
+      "work.label": "Trabalhos",
+      "work.title": "Projetos selecionados",
+      "work.intro": "Conteúdos com apps e produtos digitais.",
+      "work.soon": "Vídeo em breve",
+      "work.hint": "Adicione o link do vídeo em content.js",
+      "work.watch": "Assistir vídeo",
+      "work.post": "Ver publicação",
+
+      "services.label": "Serviços",
+      "services.title": "O que eu crio",
+      "services.note": "Formatos, entregas e direitos de uso são definidos em cada projeto.",
+
+      "contact.label": "Contato",
+      "contact.title": "Vamos criar conteúdo para o seu produto.",
+      "contact.intro": "Para parcerias, campanhas e briefings, fale comigo por e-mail ou redes sociais.",
+      "contact.email": "E-mail",
+      "contact.copy": "Copiar",
+      "contact.copied": "Copiado",
+      "contact.missing": "[A CONFIRMAR]",
+
+      "footer.role": "UGC Creator",
+      "footer.top": "Voltar ao topo"
+    }
+  }
+};

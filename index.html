@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thatiane Moura — UGC Creator</title>
+<meta name="description" content="Thatiane Moura · UGC Creator | Tech, AI & Digital Experiences.">
+<meta property="og:title" content="Thatiane Moura — UGC Creator">
+<meta property="og:description" content="UGC Creator | Tech, AI & Digital Experiences">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111111'/%3E%3Ctext x='32' y='41' font-family='Helvetica,Arial,sans-serif' font-size='24' font-weight='500' fill='%23ffffff' text-anchor='middle' letter-spacing='-1'%3ETM%3C/text%3E%3Ccircle cx='49' cy='15' r='4' fill='%23D8C4CB'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<!--BUILD:STYLE-->
+<link rel="stylesheet" href="style.css">
+<!--/BUILD:STYLE-->
+</head>
+<body>
+<!--BUILD:BODY-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="header" id="top">
+  <div class="header__inner wrap">
+    <a class="monogram" href="#top" aria-label="Thatiane Moura, home">T<span>M</span></a>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Language / Idioma">
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang__btn" data-lang="pt" aria-pressed="false">PT</button>
+      </div>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <span class="menu-btn__label" data-i18n="nav.menu">Menu</span>
+        <span class="menu-btn__lines" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HOME ============ -->
+  <section class="hero band band--dark" aria-labelledby="heroName">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow eyebrow--dark load" style="--d:0"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Tech · AI · Apps</span></p>
+        <h1 class="hero__name load" id="heroName" style="--d:1">
+          <span class="hero__first">Thatiane</span>
+          <span class="hero__last">Moura</span>
+        </h1>
+        <p class="hero__tagline load" style="--d:2" data-i18n="hero.tagline">UGC Creator | Tech, AI &amp; Digital Experiences</p>
+        <p class="hero__intro load" style="--d:3" data-i18n="hero.intro">Short-form videos that show how apps, AI tools and digital products fit into real life.</p>
+        <div class="hero__ctas load" style="--d:4">
+          <a class="btn btn--solid" href="#work"><span data-i18n="hero.ctaWork">View my work</span><span class="btn__arrow" aria-hidden="true">↓</span></a>
+          <a class="btn btn--line" href="#contact"><span data-i18n="hero.ctaContact">Get in touch</span><span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero__visual load" style="--d:2" aria-hidden="true">
+        <div class="glow"></div>
+        <div class="chip chip--left"><span class="chip__dot"></span><span data-i18n="hero.chipLeft">AI · Apps · Tech</span></div>
+        <div class="chip chip--right"><span data-i18n="hero.chipRight">Captions on</span><span class="chip__toggle"></span></div>
+
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="phone__bar">
+              <span class="rec"><span class="rec__dot"></span>REC</span>
+              <span class="timecode" id="timecode">00:00:00</span>
+              <span class="ratio">9:16</span>
+            </div>
+
+            <div class="viewfinder">
+              <span class="vf vf--tl"></span><span class="vf vf--tr"></span>
+              <span class="vf vf--bl"></span><span class="vf vf--br"></span>
+              <div class="levels">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+
+            <div class="phone__meta">
+              <span>HOOK 0:03</span><span>4K · 30FPS</span>
+            </div>
+            <div class="caption"><span id="caption">Testing a new AI tool…</span><span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" id="tickerTrack"></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="band band--light" id="about" aria-labelledby="aboutTitle">
+    <div class="wrap about">
+      <div class="about__photo" id="aboutPhoto">
+        <div class="photo-placeholder">
+          <span class="vf vf--tl"></span><span class="vf vf--tr"></span>
+          <span class="vf vf--bl"></span><span class="vf vf--br"></span>
+          <span class="photo-placeholder__label" data-i18n="about.photo">Photo [A CONFIRMAR]</span>
+        </div>
+      </div>
+      <div class="about__body">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="about.label">About</span></p>
+        <h2 class="h2" id="aboutTitle" data-i18n="about.title">Curious about technology. Focused on the people who use it.</h2>
+        <p class="lead" data-i18n="about.p1"></p>
+        <p class="lead lead--muted" data-i18n="about.p2"></p>
+        <dl class="facts">
+          <div><dt data-i18n="about.focusLabel">Focus</dt><dd data-i18n="about.focus"></dd></div>
+          <div><dt data-i18n="about.formatLabel">Format</dt><dd data-i18n="about.format"></dd></div>
+          <div><dt data-i18n="about.langLabel">Languages</dt><dd data-i18n="about.lang"></dd></div>
+          <div><dt data-i18n="about.baseLabel">Based in</dt><dd data-i18n="about.base"></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="band band--dark" id="work" aria-labelledby="workTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--dark"><span class="dot" aria-hidden="true"></span><span data-i18n="work.label">Work</span></p>
+        <h2 class="h2" id="workTitle" data-i18n="work.title">Selected projects</h2>
+        <p class="section-head__intro" data-i18n="work.intro">Content featuring apps and digital products.</p>
+      </div>
+    </div>
+    <div class="work-scroller">
+      <ul class="work-grid wrap" id="workGrid"></ul>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="band band--mist" id="services" aria-labelledby="servicesTitle">
+    <div class="wrap">
+      <div class="section-head section-head--row">
+        <div>
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="services.label">Services</span></p>
+          <h2 class="h2" id="servicesTitle" data-i18n="services.title">What I create</h2>
+        </div>
+        <p class="section-head__intro" data-i18n="services.note">Formats, deliverables and usage rights are defined for each project.</p>
+      </div>
+      <ul class="services" id="servicesList"></ul>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="band band--dark contact" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap contact__inner">
+      <div class="contact__copy">
+        <p class="eyebrow eyebrow--dark"><span class="dot" aria-hidden="true"></span><span data-i18n="contact.label">Contact</span></p>
+        <h2 class="contact__title" id="contactTitle" data-i18n="contact.title">Let's create content for your product.</h2>
+        <p class="section-head__intro" data-i18n="contact.intro">For collaborations, campaigns and briefs, reach out by email or social media.</p>
+      </div>
+      <ul class="contact-list" id="contactList"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer band band--dark">
+  <div class="wrap footer__inner">
+    <p>© <span id="year">2026</span> Thatiane Moura · <span data-i18n="footer.role">UGC Creator</span></p>
+    <a href="#top" class="footer__top"><span data-i18n="footer.top">Back to top</span> ↑</a>
+  </div>
+</footer>
+<!--/BUILD:BODY-->
+
+<!--BUILD:SCRIPTS-->
+<script src="content.js"></script>
+<script src="script.js"></script>
+<!--/BUILD:SCRIPTS-->
+</body>
+</html>
