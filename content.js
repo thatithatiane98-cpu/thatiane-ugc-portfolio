@@ -173,12 +173,12 @@ window.SITE = {
     },
     {
       icon: "review",
-      title: { en: "Product Reviews & Lifestyle Content", pt: "Reviews e conteúdo lifestyle" },
+      title: { en: "Product Reviews & Lifestyle Content", pt: "Avaliações de produto e conteúdo lifestyle" },
       text: {
         en: "Your product inside everyday routines, presented in a natural and honest way.",
         pt: "Seu produto dentro da rotina, apresentado de forma natural e honesta."
       },
-      tags: { en: ["Daily routine", "Reviews"], pt: ["Rotina", "Reviews"] }
+      tags: { en: ["Daily routine", "Reviews"], pt: ["Rotina", "Avaliações"] }
     }
   ],
 
@@ -203,6 +203,7 @@ window.SITE = {
       "hero.videoLabel": "Intro video",
       "hero.videoSoon": "Coming soon",
       "hero.videoHint": "Add the link in content.js → introVideo",
+      "hero.videoTag": "Intro",
 
       "ticker": ["AI Tools", "Mobile Apps", "Productivity", "Digital Lifestyle", "Software", "Tech Innovation"],
 
@@ -227,6 +228,7 @@ window.SITE = {
       "work.hint": "Add the video link in content.js",
       "work.watch": "Watch video",
       "work.post": "View post",
+      "work.videoTitle": "{name} video",
 
       "services.label": "Services",
       "services.title": "What I *create*",
@@ -242,7 +244,13 @@ window.SITE = {
       "contact.missing": "[A CONFIRMAR]",
 
       "footer.role": "UGC Creator",
-      "footer.top": "Back to top"
+      "footer.top": "Back to top",
+
+      "todo.label": "To confirm",
+      "a11y.skip": "Skip to content",
+      "a11y.home": "Thatiane Moura, home",
+      "a11y.nav": "Main navigation",
+      "a11y.lang": "Language"
     },
 
     pt: {
@@ -262,6 +270,7 @@ window.SITE = {
       "hero.videoLabel": "Vídeo de apresentação",
       "hero.videoSoon": "Em breve",
       "hero.videoHint": "Adicione o link em content.js → introVideo",
+      "hero.videoTag": "Apresentação",
 
       "ticker": ["Ferramentas de IA", "Apps", "Produtividade", "Lifestyle digital", "Software", "Inovação"],
 
@@ -286,6 +295,7 @@ window.SITE = {
       "work.hint": "Adicione o link do vídeo em content.js",
       "work.watch": "Assistir vídeo",
       "work.post": "Ver publicação",
+      "work.videoTitle": "Vídeo {name}",
 
       "services.label": "Serviços",
       "services.title": "O que eu *crio*",
@@ -301,7 +311,13 @@ window.SITE = {
       "contact.missing": "[A CONFIRMAR]",
 
       "footer.role": "UGC Creator",
-      "footer.top": "Voltar ao topo"
+      "footer.top": "Voltar ao topo",
+
+      "todo.label": "A confirmar",
+      "a11y.skip": "Pular para o conteúdo",
+      "a11y.home": "Thatiane Moura, início",
+      "a11y.nav": "Navegação principal",
+      "a11y.lang": "Idioma"
     }
   }
 };

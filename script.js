@@ -16,10 +16,16 @@
   var DEFAULTS = {
     en: { "contact.send": "Send an email", "work.watch": "Watch video", "work.post": "View post",
           "hero.videoLabel": "Intro video", "hero.videoSoon": "Coming soon",
-          "hero.videoHint": "Add the link in content.js → introVideo" },
+          "hero.videoHint": "Add the link in content.js → introVideo",
+          "hero.videoTag": "Intro", "work.videoTitle": "{name} video", "todo.label": "To confirm",
+          "a11y.skip": "Skip to content", "a11y.home": "Thatiane Moura, home",
+          "a11y.nav": "Main navigation", "a11y.lang": "Language" },
     pt: { "contact.send": "Enviar e-mail", "work.watch": "Assistir vídeo", "work.post": "Ver publicação",
           "hero.videoLabel": "Vídeo de apresentação", "hero.videoSoon": "Em breve",
-          "hero.videoHint": "Adicione o link em content.js → introVideo" }
+          "hero.videoHint": "Adicione o link em content.js → introVideo",
+          "hero.videoTag": "Apresentação", "work.videoTitle": "Vídeo {name}", "todo.label": "A confirmar",
+          "a11y.skip": "Pular para o conteúdo", "a11y.home": "Thatiane Moura, início",
+          "a11y.nav": "Navegação principal", "a11y.lang": "Idioma" }
   };
 
   /* ---------- Helpers ---------- */
@@ -34,7 +40,7 @@
   // *words between asterisks* into the rose italic accent and " | " into a rose divider.
   function rich(str) {
     var safe = escapeHTML(str == null ? "" : str);
-    safe = safe.split(escapeHTML(TODO)).join('<mark class="todo">A CONFIRMAR</mark>');
+    safe = safe.split(escapeHTML(TODO)).join('<mark class="todo">' + escapeHTML(t("todo.label")) + "</mark>");
     safe = safe.replace(/\*([^*]+)\*/g, '<em class="accent">$1</em>');
     safe = safe.replace(/ \| /g, ' <span class="sep" aria-hidden="true">|</span> ');
     return safe;
@@ -81,6 +87,14 @@
       if (Array.isArray(val)) return;
       el.innerHTML = rich(val);
     });
+    $all("[data-i18n-aria]").forEach(function (el) {
+      var val = t(el.getAttribute("data-i18n-aria"));
+      if (val) el.setAttribute("aria-label", val);
+    });
+    var menuBtn = $("#menuBtn"), menuLabel = $(".menu-btn__label");
+    if (menuBtn && menuLabel) {
+      menuLabel.textContent = menuBtn.getAttribute("aria-expanded") === "true" ? t("nav.close") : t("nav.menu");
+    }
   }
 
   /* ---------- Ticker ---------- */
@@ -101,7 +115,9 @@
     box.className = "phone__screen";
     if (embed && embed.type === "iframe") {
       box.classList.add("phone__screen--video");
-      if (!box.querySelector("iframe")) {
+      var existing = box.querySelector("iframe");
+      if (existing) existing.title = t("hero.videoLabel") + " · Thatiane Moura";
+      if (!existing) {
         box.innerHTML = '<iframe src="' + escapeHTML(embed.src) + '" title="' + title + '" loading="lazy" ' +
           'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
       }
@@ -109,7 +125,9 @@
     }
     if (embed && embed.type === "video") {
       box.classList.add("phone__screen--video");
-      if (!box.querySelector("video")) {
+      var existingVideo = box.querySelector("video");
+      if (existingVideo) existingVideo.setAttribute("aria-label", t("hero.videoLabel") + " · Thatiane Moura");
+      if (!existingVideo) {
         var poster = isFilled(SITE.introPoster) ? ' poster="' + escapeHTML(SITE.introPoster.trim()) + '"' : "";
         box.innerHTML = '<video src="' + escapeHTML(embed.src) + '"' + poster + ' controls playsinline preload="metadata" aria-label="' + title + '"></video>';
       }
@@ -117,7 +135,7 @@
     }
     box.classList.add("phone__screen--empty");
     var corners = '<span class="vf vf--tl"></span><span class="vf vf--tr"></span><span class="vf vf--bl"></span><span class="vf vf--br"></span>';
-    var top = '<span class="intro-empty__top" aria-hidden="true"><span>Intro</span><span>9:16</span></span>';
+    var top = '<span class="intro-empty__top" aria-hidden="true"><span>' + escapeHTML(t("hero.videoTag")) + '</span><span>9:16</span></span>';
     if (embed && embed.type === "link") {
       box.innerHTML = '<a class="intro-empty" href="' + escapeHTML(embed.src) + '" target="_blank" rel="noopener">' + corners + top +
         '<span class="intro-empty__center"><span class="play" aria-hidden="true"></span><span class="media__label">' +
@@ -138,16 +156,17 @@
     var projects = SITE.projects || [];
     grid.innerHTML = projects.map(function (p) {
       var name = escapeHTML(p.name || "");
+      var videoTitle = escapeHTML(t("work.videoTitle").replace("{name}", p.name || ""));
       var embed = videoEmbed(p.video);
       var media;
 
       if (embed && embed.type === "iframe") {
-        media = '<div class="media"><iframe src="' + escapeHTML(embed.src) + '" title="' + name + ' video" loading="lazy" ' +
+        media = '<div class="media"><iframe src="' + escapeHTML(embed.src) + '" title="' + videoTitle + '" loading="lazy" ' +
           'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
       } else if (embed && embed.type === "video") {
         var poster = isFilled(p.poster) ? ' poster="' + escapeHTML(p.poster) + '"' : "";
         media = '<div class="media"><video src="' + escapeHTML(embed.src) + '"' + poster +
-          ' controls playsinline preload="metadata" aria-label="' + name + ' video"></video></div>';
+          ' controls playsinline preload="metadata" aria-label="' + videoTitle + '"></video></div>';
       } else if (embed && embed.type === "link") {
         media = '<a class="media media--empty media--link" href="' + escapeHTML(embed.src) + '" target="_blank" rel="noopener">' +
           '<span class="vf vf--tl"></span><span class="vf vf--tr"></span><span class="vf vf--bl"></span><span class="vf vf--br"></span>' +

@@ -14,19 +14,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <!--BUILD:STYLE-->
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <!--/BUILD:STYLE-->
 </head>
 <body>
 <!--BUILD:BODY-->
 <div id="top"></div>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
 <header class="header">
   <div class="header__inner wrap">
-    <a class="monogram" href="#top" aria-label="Thatiane Moura, home">T<span>M</span></a>
+    <a class="monogram" href="#top" aria-label="Thatiane Moura, home" data-i18n-aria="a11y.home">T<span>M</span></a>
 
-    <nav class="nav" id="nav" aria-label="Main">
+    <nav class="nav" id="nav" aria-label="Main navigation" data-i18n-aria="a11y.nav">
       <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#about" data-i18n="nav.about">About</a>
       <a href="#services" data-i18n="nav.services">Services</a>
@@ -34,7 +34,7 @@
     </nav>
 
     <div class="header__tools">
-      <div class="lang" role="group" aria-label="Language / Idioma">
+      <div class="lang" role="group" aria-label="Language" data-i18n-aria="a11y.lang">
         <button type="button" class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang__btn" data-lang="pt" aria-pressed="false">PT</button>
       </div>
@@ -159,8 +159,8 @@
 <!--/BUILD:BODY-->
 
 <!--BUILD:SCRIPTS-->
-<script src="content.js?v=3"></script>
-<script src="script.js?v=3"></script>
+<script src="content.js?v=4"></script>
+<script src="script.js?v=4"></script>
 <!--/BUILD:SCRIPTS-->
 </body>
 </html>
