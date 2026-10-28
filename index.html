@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <!--BUILD:STYLE-->
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=8">
 <!--/BUILD:STYLE-->
 </head>
 <body>
@@ -70,10 +70,14 @@
         <div class="glow" aria-hidden="true"></div>
         <div class="chip chip--left" aria-hidden="true"><span class="chip__dot"></span><span data-i18n="hero.chipLeft">AI · Apps · Tech</span></div>
 
-        <figure class="phone" aria-labelledby="introLabel">
-          <!-- Área do vídeo de apresentação: preenchida pelo script a partir de content.js (introVideo) -->
-          <div class="phone__screen" id="introMedia"></div>
-          <figcaption class="phone__caption" id="introLabel" data-i18n="hero.videoLabel">Intro video</figcaption>
+        <!-- Foto da Home: o arquivo é definido em content.js (heroPhoto) -->
+        <figure class="portrait">
+          <span class="portrait__offset" aria-hidden="true"></span>
+          <div class="portrait__frame">
+            <img id="heroPhoto" src="foto-thatiane.jpg" alt="Thatiane Moura" width="1254" height="1254" fetchpriority="high" decoding="async">
+            <span class="vf vf--tl" aria-hidden="true"></span><span class="vf vf--tr" aria-hidden="true"></span>
+            <span class="vf vf--bl" aria-hidden="true"></span><span class="vf vf--br" aria-hidden="true"></span>
+          </div>
         </figure>
       </div>
     </div>
@@ -85,24 +89,18 @@
 
   <!-- ============ ABOUT ============ -->
   <section class="band band--petal" id="about" aria-labelledby="aboutTitle">
-    <div class="wrap about">
-      <div class="about__photo" id="aboutPhoto">
-        <div class="photo-placeholder">
-          <span class="vf vf--tl"></span><span class="vf vf--tr"></span>
-          <span class="vf vf--bl"></span><span class="vf vf--br"></span>
-          <span class="photo-placeholder__label" data-i18n="about.photo">Photo [A CONFIRMAR]</span>
-        </div>
-      </div>
-      <div class="about__body">
+    <div class="wrap about about--text">
+      <div class="about__head">
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="about.label">About</span></p>
         <h2 class="h2" id="aboutTitle" data-i18n="about.title">Curious about technology. Focused on the people who use it.</h2>
+      </div>
+      <div class="about__body">
         <p class="lead" data-i18n="about.p1"></p>
         <p class="lead lead--muted" data-i18n="about.p2"></p>
         <dl class="facts">
           <div><dt data-i18n="about.focusLabel">Focus</dt><dd data-i18n="about.focus"></dd></div>
           <div><dt data-i18n="about.formatLabel">Format</dt><dd data-i18n="about.format"></dd></div>
           <div><dt data-i18n="about.langLabel">Languages</dt><dd data-i18n="about.lang"></dd></div>
-          <div><dt data-i18n="about.baseLabel">Based in</dt><dd data-i18n="about.base"></dd></div>
         </dl>
       </div>
     </div>
@@ -159,8 +157,8 @@
 <!--/BUILD:BODY-->
 
 <!--BUILD:SCRIPTS-->
-<script src="content.js?v=4"></script>
-<script src="script.js?v=4"></script>
+<script src="content.js?v=8"></script>
+<script src="script.js?v=8"></script>
 <!--/BUILD:SCRIPTS-->
 </body>
 </html>

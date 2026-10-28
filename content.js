@@ -35,30 +35,20 @@ window.SITE = {
      (ou some, se showPlaceholders for false).
      --------------------------------------------------------------- */
   contact: {
-    email: "",
-    instagram: "",
-    tiktok: "",
+    email: "thatisantosjob1@gmail.com",
+    instagram: "https://www.instagram.com/thatimoura.ugc/",
+    tiktok: "https://www.tiktok.com/@euthatimoura",
     linkedin: "",
     other: { label: "", url: "" }
   },
 
   /* ---------------------------------------------------------------
-     VÍDEO DE APRESENTAÇÃO (primeira tela, dentro do celular)
-     Enquanto estiver "", aparece o aviso "Coming soon" (em breve).
-     Aceita: link do YouTube (inclusive Shorts / "não listado"),
-     link do Vimeo, ou um arquivo enviado junto com o site,
-     por exemplo "videos/apresentacao.mp4".
-     introPoster: (opcional) imagem de capa para arquivo .mp4.
+     FOTO DA HOME (primeira tela, coluna direita)
+     Nome do arquivo da foto, enviado junto com o site.
+     Para trocar de foto: envie a nova imagem ao GitHub e escreva
+     o nome dela aqui (sem acentos nem espaços), ex.: "foto-nova.jpg".
      --------------------------------------------------------------- */
-  introVideo: "",
-  introPoster: "",
-
-  /* ---------------------------------------------------------------
-     FOTO (seção About)
-     Envie a foto para o mesmo lugar do site (ex.: "foto.jpg")
-     e escreva o nome do arquivo aqui. Deixe "" enquanto não tiver.
-     --------------------------------------------------------------- */
-  photo: "",
+  heroPhoto: "foto-thatiane.jpg",
 
   /* ---------------------------------------------------------------
      PROJETOS
@@ -76,47 +66,47 @@ window.SITE = {
   projects: [
     {
       name: "Miqla",
-      category: { en: "[A CONFIRMAR]", pt: "[A CONFIRMAR]" },
+      category: { en: "Tech & AI", pt: "Tecnologia e IA" },
       description: {
-        en: "Short-form UGC video featuring Miqla. [A CONFIRMAR] Describe what the video shows and its format.",
-        pt: "Vídeo UGC curto com o Miqla. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+        en: "Short-form UGC video featuring Miqla.",
+        pt: "Vídeo UGC curto com o Miqla."
       },
-      video: "",
+      video: "miqla.mp4",
       post: "",
-      poster: ""
+      poster: "miqla-capa.jpg"
     },
     {
       name: "Picsart",
       category: { en: "AI Creative App", pt: "App criativo com IA" },
       description: {
-        en: "Short-form UGC video featuring Picsart. [A CONFIRMAR] Describe what the video shows and its format.",
-        pt: "Vídeo UGC curto com o Picsart. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+        en: "Short-form UGC video featuring Picsart.",
+        pt: "Vídeo UGC curto com o Picsart."
       },
-      video: "",
+      video: "picsart.mp4",
       post: "",
-      poster: ""
+      poster: "picsart-capa.jpg"
     },
     {
       name: "MPL",
       category: { en: "Mobile Gaming App", pt: "App de jogos mobile" },
       description: {
-        en: "Short-form UGC video featuring MPL. [A CONFIRMAR] Describe what the video shows and its format.",
-        pt: "Vídeo UGC curto com o MPL. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+        en: "Short-form UGC video featuring MPL.",
+        pt: "Vídeo UGC curto com o MPL."
       },
-      video: "",
+      video: "mpl.mp4",
       post: "",
-      poster: ""
+      poster: "mpl-capa.jpg"
     },
     {
       name: "Airlearn",
       category: { en: "Language Learning App", pt: "App de idiomas" },
       description: {
-        en: "Short-form UGC video featuring Airlearn. [A CONFIRMAR] Describe what the video shows and its format.",
-        pt: "Vídeo UGC curto com o Airlearn. [A CONFIRMAR] Descreva o que o vídeo mostra e o formato."
+        en: "Short-form UGC video featuring Airlearn.",
+        pt: "Vídeo UGC curto com o Airlearn."
       },
-      video: "",
+      video: "airlearn.mp4",
       post: "",
-      poster: ""
+      poster: "airlearn-capa.jpg"
     }
   ],
 
@@ -209,17 +199,16 @@ window.SITE = {
 
       "about.label": "About",
       "about.title": "Curious about technology. *Focused on the people who use it.*",
-      "about.p1": "I'm Thatiane, a UGC creator making content for technology brands, AI tools and apps. I like taking a digital product and showing it the way a real person would discover it: simple, honest and easy to follow.",
-      "about.p2": "[A CONFIRMAR] Add a sentence about your background, what got you into tech and AI, and your content style.",
+      "about.p1": "I'm Thatiane Moura, a Brazilian creator who moved into tech and UGC after a background in the beauty world. I lived outside Brazil for three years, and connecting with people has always come naturally to me.",
+      "about.p2": "Today I bring together my two passions, communication and technology. I take a digital product and show it the way a real person would discover it: simple, honest and easy to follow.",
       "about.focusLabel": "Focus",
       "about.focus": "AI tools · Apps · Tech",
       "about.formatLabel": "Format",
       "about.format": "Vertical short-form video",
       "about.langLabel": "Languages",
-      "about.lang": "[A CONFIRMAR]",
+      "about.lang": "Portuguese (native) · English · Arabic (basic)",
       "about.baseLabel": "Based in",
       "about.base": "[A CONFIRMAR]",
-      "about.photo": "Photo [A CONFIRMAR]",
 
       "work.label": "Work",
       "work.title": "Selected *projects*",
@@ -276,17 +265,16 @@ window.SITE = {
 
       "about.label": "Sobre",
       "about.title": "Curiosa por tecnologia. *Atenta às pessoas que a usam.*",
-      "about.p1": "Sou a Thatiane, UGC creator que cria conteúdo para marcas de tecnologia, ferramentas de IA e aplicativos. Gosto de pegar um produto digital e mostrá-lo do jeito que uma pessoa real o descobriria: de forma simples, honesta e fácil de acompanhar.",
-      "about.p2": "[A CONFIRMAR] Adicione uma frase sobre sua trajetória, o que te aproximou de tecnologia e IA e o seu estilo de conteúdo.",
+      "about.p1": "Sou Thatiane Moura, brasileira, e migrei para a tecnologia e o UGC depois de uma trajetória no universo da beleza. Morei três anos fora do Brasil e sempre tive facilidade para me conectar com as pessoas.",
+      "about.p2": "Hoje uno minhas duas paixões: comunicação e tecnologia. Pego um produto digital e mostro do jeito que uma pessoa real o descobriria, de forma simples, honesta e fácil de acompanhar.",
       "about.focusLabel": "Foco",
       "about.focus": "Ferramentas de IA · Apps · Tech",
       "about.formatLabel": "Formato",
       "about.format": "Vídeo vertical curto",
       "about.langLabel": "Idiomas",
-      "about.lang": "[A CONFIRMAR]",
+      "about.lang": "Português (nativo) · Inglês · Árabe (básico)",
       "about.baseLabel": "Localização",
       "about.base": "[A CONFIRMAR]",
-      "about.photo": "Foto [A CONFIRMAR]",
 
       "work.label": "Trabalhos",
       "work.title": "Projetos *selecionados*",

@@ -307,6 +307,12 @@
     }
   }
 
+  /* ---------- Home photo ---------- */
+  function renderHeroPhoto() {
+    var img = $("#heroPhoto");
+    if (img && isFilled(SITE.heroPhoto)) img.setAttribute("src", SITE.heroPhoto.trim());
+  }
+
   /* ---------- Photo ---------- */
   function renderPhoto() {
     var box = $("#aboutPhoto");
@@ -389,6 +395,7 @@
   });
   var year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
+  renderHeroPhoto();
   renderPhoto();
   initMenu();
   initHeader();
